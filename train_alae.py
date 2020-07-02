@@ -272,6 +272,8 @@ def train(cfg, logger, local_rank, world_size, distributed):
         i = 0
         for x_orig in tqdm(batches):
             i += 1
+            if(i==2000):
+                break
             with torch.no_grad():
                 if x_orig.shape[0] != lod2batch.get_per_GPU_batch_size():
                     continue
